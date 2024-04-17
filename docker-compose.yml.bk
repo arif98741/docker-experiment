@@ -49,19 +49,16 @@ services:
     image: adminer
     restart: unless-stopped
 
-  apache-php-81:
-    build: ./docker/apache-php-81/build
-    image: apache-php-81
+  php-82:
+    build: ./docker/php-82/build
+    image: php-82
     restart: unless-stopped
     env_file:
       - mysql.env
     volumes:
-      - ./docker/apache-php-81/config/msmtprc:/etc/msmtprc:ro
-      - ./docker/apache-php-81/config/php.ini:/usr/local/etc/php/conf.d/my.ini:ro
-      - ./docker/apache-php-81/config/apache2.conf:/etc/apache2/apache2.conf:ro
-      - ./docker/apache-php-81/config/sites-enabled:/etc/apache2/sites-enabled:ro
-      - ./docker/apache-php-81/composer/:/root/.composer/
+      - ./docker/php-82/config/msmtprc:/etc/msmtprc:ro
+      - ./docker/php-82/config/php.ini:/usr/local/etc/php/conf.d/my.ini:ro
+      - ./docker/php-82/config/www.conf:/usr/local/etc/php-fpm.d/www.conf:ro
+      - ./docker/php-82/composer/:/root/.composer/
       - ./projects/:/srv/projects/
-    ports:
-      - "8001:80"
     logging: *default-logging

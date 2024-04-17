@@ -3,3 +3,4 @@
 /docker/acme/acme.sh/*
 docker-compose.override.yml
 mysql.env
+.idea
